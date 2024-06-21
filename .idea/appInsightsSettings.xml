@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.amrogad.zerochat" />
+                  <option name="mobileSdkAppId" value="1:739965043520:android:26f80b69b46e668fcdf0a5" />
+                  <option name="projectId" value="zerochat-d5aae" />
+                  <option name="projectNumber" value="739965043520" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

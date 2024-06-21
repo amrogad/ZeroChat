@@ -1,47 +1,27 @@
 package com.amrogad.zerochat
-
+import ChatScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.amrogad.zerochat.ui.theme.ZeroChatTheme
+import androidx.compose.runtime.*
+import com.amrogad.zerochat.ui.theme.ChatAppTheme
+import ui.AuthScreen
+import viewmodel.AuthViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            ZeroChatTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            ChatAppTheme {
+                val authViewModel: AuthViewModel = AuthViewModel()
+                var isAuthenticated by remember { mutableStateOf(authViewModel.isLoggedIn()) }
+
+                if (isAuthenticated) {
+                    ChatScreen()
+                } else {
+                    AuthScreen(onAuthSuccess = { isAuthenticated = true })
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ZeroChatTheme {
-        Greeting("Android")
     }
 }
